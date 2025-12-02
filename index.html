@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Pregnancy Photo Album · VS LiteCode Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Nunito:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="page-bg-glow"></div>
+
+    <header class="album-header">
+        <a class="logo-block" href="https://bondarenkovita35-afk.github.io/vs-litecode-studio/" target="_blank">
+            <img src="images/logo.png" alt="VS LiteCode Studio logo" class="logo-img">
+            <span class="logo-text">VS LITECODE STUDIO</span>
+        </a>
+
+        <div class="lang-switcher">
+            <span class="lang-label" data-i18n="labelLanguage">Язык:</span>
+            <button class="lang-btn" data-lang="sv">SV</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn lang-btn-active" data-lang="ru">RU</button>
+        </div>
+    </header>
+
+    <main class="album-shell">
+        <button class="nav-arrow nav-arrow-left" id="prevPage" aria-label="Previous page">❮</button>
+
+        <section class="album">
+            <div class="album-border-glow"></div>
+
+            <div class="album-page" id="albumPage">
+                <div class="page-flower page-flower-top"></div>
+                <div class="page-flower page-flower-bottom"></div>
+                <div class="page-sparkle sparkle-1"></div>
+                <div class="page-sparkle sparkle-2"></div>
+                <div class="page-sparkle sparkle-3"></div>
+
+                <div class="page-photo-block">
+                    <div class="photo-frame">
+                        <img id="pageImage" src="images/hero.jpeg" alt="Pregnancy photo" />
+                        <div class="photo-gloss"></div>
+                    </div>
+                </div>
+
+                <div class="page-text-block">
+                    <p class="page-tagline" id="pageTagline"></p>
+                    <h1 class="page-title" id="pageTitle"></h1>
+                    <p class="page-date" id="pageDate"></p>
+                    <p class="page-story" id="pageStory"></p>
+                    <p class="page-mini-note" id="pageMiniNote"></p>
+                </div>
+            </div>
+        </section>
+
+        <button class="nav-arrow nav-arrow-right" id="nextPage" aria-label="Next page">❯</button>
+    </main>
+
+    <footer class="album-footer">
+        <span class="footer-text">
+            © 2025 VS LiteCode Studio · Pregnancy Premium Album
+        </span>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
