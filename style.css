@@ -1,407 +1,422 @@
-/* Базовые стили */
+/* ===== ОБЩЕЕ ОФОРМЛЕНИЕ САЙТА ===== */
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-    font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: radial-gradient(circle at top left, #fbe5ff 0%, #e0b8ff 35%, #f3c0df 70%, #f8e6ff 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #2c2036;
-    padding: 24px 12px;
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #2d1345;
+  background: radial-gradient(circle at 10% 0%, #ffe0ff 0, #f3c6ff 25%, #d58cff 55%, #b069ff 85%, #7d4cff 100%);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 }
 
-/* мягкое свечение фона */
-.page-bg-glow {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 10% 0%, rgba(255,255,255,0.6) 0, transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(206, 154, 255, 0.5) 0, transparent 60%);
-    z-index: -1;
+/* чтобы альбом по центру, но с отступами */
+.album-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 10px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* Header */
-
+/* ===== ШАПКА ===== */
 .album-header {
-    width: min(1200px, 100%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
-.logo-block {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    text-decoration: none;
-    background: radial-gradient(circle at 0 0, #ffffff 0, rgba(255,255,255,0.05) 45%, rgba(40, 16, 77, 0.7) 100%);
-    box-shadow: 0 10px 30px rgba(18, 8, 42, 0.35);
-    border: 1px solid rgba(255,255,255,0.5);
-    backdrop-filter: blur(10px);
+/* Плашка с логотипом */
+.brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffffff 0%, #f9eafe 35%, #7c3aed 100%);
+  box-shadow: 0 10px 25px rgba(45, 19, 69, 0.35);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
 }
 
-.logo-img {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    object-fit: cover;
+.brand-pill::before {
+  /* легкий шиммер */
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.75), transparent 65%),
+    radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.35), transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+  pointer-events: none;
+  animation: shimmer 8s linear infinite;
 }
 
-.logo-text {
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    font-weight: 600;
-    color: #ffffff;
-    text-transform: uppercase;
+@keyframes shimmer {
+  0% {
+    transform: translateX(-10%) translateY(-5%);
+  }
+  50% {
+    transform: translateX(10%) translateY(5%);
+  }
+  100% {
+    transform: translateX(-10%) translateY(-5%);
+  }
 }
 
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 2px rgba(119, 51, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-text {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #26113f;
+  font-weight: 600;
+}
+
+/* Переключатель языка */
 .lang-switcher {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    color: #4c4058;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .lang-label {
-    opacity: 0.85;
+  font-size: 13px;
+  color: #fdf6ff;
 }
 
 .lang-btn {
-    border: none;
-    background: rgba(255,255,255,0.4);
-    padding: 4px 10px;
-    border-radius: 999px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(6px);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: transparent;
+  color: #fdf6ff;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .lang-btn:hover {
-    background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.16);
 }
 
-.lang-btn-active {
-    background: linear-gradient(135deg, #9d5cff, #ff6fd8);
-    color: #fff;
-    box-shadow: 0 6px 16px rgba(100, 42, 170, 0.5);
+.lang-btn.active {
+  background: linear-gradient(135deg, #ff8af5, #c94dff);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(116, 36, 146, 0.6);
 }
 
-/* Основной контейнер */
+/* ===== ГЛАВНЫЙ БЛОК АЛЬБОМА ===== */
 
-.album-shell {
-    width: min(1200px, 100%);
-    display: grid;
-    grid-template-columns: 52px minmax(0, 1fr) 52px;
-    align-items: stretch;
-    margin-top: 10px;
-    margin-bottom: 16px;
+.album-main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 10px 0 6px;
 }
 
-/* Стрелки */
-
-.nav-arrow {
-    align-self: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 999px;
-    border: none;
-    cursor: pointer;
-    background: rgba(255,255,255,0.65);
-    box-shadow: 0 12px 20px rgba(121, 91, 152, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    color: #6c4a93;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    backdrop-filter: blur(8px);
+/* Кнопки перелистывания */
+.nav-btn {
+  border: none;
+  background: rgba(255, 255, 255, 0.35);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  align-self: center;
+  margin: 0 4px;
+  box-shadow: 0 6px 16px rgba(80, 23, 130, 0.45);
+  backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
-.nav-arrow:hover {
-    transform: translateY(-1px) scale(1.03);
-    background: #ffffff;
-    box-shadow: 0 16px 28px rgba(87, 54, 120, 0.55);
+.nav-btn span {
+  font-size: 22px;
+  color: #5a258f;
 }
 
-/* Обложка альбома */
-
-.album {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255,255,255,0.5), rgba(255,255,255,0.15));
-    border-radius: 32px;
-    padding: 18px;
-    box-shadow:
-        0 40px 60px rgba(49, 25, 87, 0.55),
-        inset 0 0 0 0.5px rgba(255,255,255,0.5);
-    backdrop-filter: blur(14px);
+.nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(80, 23, 130, 0.7);
+  background: rgba(255, 255, 255, 0.9);
 }
 
-.album-border-glow {
-    position: absolute;
-    inset: -2px;
-    border-radius: 34px;
-    background:
-        radial-gradient(circle at 0 0, rgba(255,255,255,0.9) 0, transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(199, 142, 255, 0.9) 0, transparent 50%);
-    opacity: 0.2;
-    pointer-events: none;
+/* Сама страница альбома */
+.page {
+  position: relative;
+  flex: 1;
+  max-width: 880px;
+  margin: 0 6px;
+  border-radius: 36px;
+  padding: 18px;
+  background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(255, 236, 255, 0.45), transparent 60%),
+    linear-gradient(145deg, #f7daff 0%, #f3c3ff 45%, #f8dfff 75%, #f2c4ff 100%);
+  box-shadow:
+    0 22px 45px rgba(52, 10, 99, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
 }
 
-/* Страница альбома */
-
-.album-page {
-    position: relative;
-    background:
-        radial-gradient(circle at 0 0, rgba(255,255,255,0.75) 0, transparent 45%),
-        radial-gradient(circle at 100% 0, rgba(252, 227, 255, 0.95) 0, transparent 55%),
-        radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.9) 0, transparent 60%);
-    border-radius: 26px;
-    padding: 30px;
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
-    gap: 24px;
-    overflow: hidden;
-    box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.7),
-        0 30px 60px rgba(102, 68, 142, 0.25);
-    transform-origin: center left;
-    transform-style: preserve-3d;
+/* легкое свечение для обложки */
+.page-glow {
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.65), transparent 60%),
+    radial-gradient(circle at 80% 100%, rgba(255, 178, 255, 0.65), transparent 65%);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
-/* Эффект перелистывания */
-
-.album-page.turn-right {
-    animation: pageTurnRight 0.7s ease-in-out;
+/* внутри – сама "страница", чуть меньшая, чтобы был отступ */
+.page-inner {
+  position: relative;
+  z-index: 1;
+  border-radius: 30px;
+  padding: 20px;
+  background: linear-gradient(145deg, #fff7ff 0%, #fcecff 50%, #ffeefe 100%);
+  box-shadow:
+    0 18px 40px rgba(78, 21, 126, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+    inset 0 16px 32px rgba(255, 255, 255, 0.55);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 28px;
 }
 
-.album-page.turn-left {
-    animation: pageTurnLeft 0.7s ease-in-out;
+/* для внутренних страниц уменьшаем свечение */
+.page:not(.page--cover) .page-glow {
+  opacity: 0.4;
 }
 
-@keyframes pageTurnRight {
-    0% { transform: perspective(1600px) rotateY(0deg); }
-    50% { transform: perspective(1600px) rotateY(-18deg); }
-    100% { transform: perspective(1600px) rotateY(0deg); }
+/* ===== Фото ===== */
+
+.page-image {
+  border-radius: 26px;
+  padding: 12px;
+  background: radial-gradient(circle at 10% 0, #ffffff 0, #f4eaff 40%, #f7e2ff 70%, #f0cffc 100%);
+  box-shadow:
+    0 18px 36px rgba(65, 21, 112, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes pageTurnLeft {
-    0% { transform: perspective(1600px) rotateY(0deg); }
-    50% { transform: perspective(1600px) rotateY(18deg); }
-    100% { transform: perspective(1600px) rotateY(0deg); }
+.page-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  display: block;
+  object-fit: cover;
+  box-shadow:
+    0 14px 30px rgba(33, 11, 66, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.95);
+  /* убираем "туман": никаких фильтров! */
+  filter: none;
 }
 
-/* Декор: абстрактные цветы / сирень */
+/* ===== Текст страницы ===== */
 
-.page-flower {
-    position: absolute;
-    width: 220px;
-    height: 220px;
-    background:
-        radial-gradient(circle at 30% 30%, #ffffff 0, rgba(255,255,255,0.4) 18%, transparent 55%),
-        radial-gradient(circle at 70% 70%, #f7b0ff 0, rgba(242, 162, 255, 0.2) 45%, transparent 70%);
-    filter: blur(1px);
-    opacity: 0.75;
-    pointer-events: none;
-    mix-blend-mode: screen;
+.page-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding-inline: 6px;
 }
 
-.page-flower-top {
-    top: -40px;
-    right: -40px;
+.page-tag {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b55add;
+  margin: 0 0 4px;
 }
 
-.page-flower-bottom {
-    bottom: -60px;
-    left: -70px;
-    transform: rotate(-18deg);
-}
-
-/* Мерцание */
-
-.page-sparkle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: radial-gradient(circle, #ffffff 0, #ffe9ff 40%, transparent 70%);
-    opacity: 0.9;
-    pointer-events: none;
-}
-
-.sparkle-1 { top: 22%; left: 60%; animation: sparkle 3s ease-in-out infinite; }
-.sparkle-2 { top: 70%; left: 80%; animation: sparkle 4s ease-in-out infinite 0.6s; }
-.sparkle-3 { top: 40%; left: 20%; animation: sparkle 3.5s ease-in-out infinite 1s; }
-
-@keyframes sparkle {
-    0%, 100% { transform: scale(0.6); opacity: 0.2; }
-    50% { transform: scale(1.4); opacity: 1; }
-}
-
-/* Фото */
-
-.page-photo-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.photo-frame {
-    position: relative;
-    width: 100%;
-    max-width: 380px;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow:
-        0 30px 50px rgba(55, 37, 82, 0.55),
-        inset 0 0 0 1px rgba(255,255,255,0.8);
-    background: #000;
-}
-
-.photo-frame img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-/* глянец */
-
-.photo-gloss {
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(135deg, rgba(255,255,255,0.65) 0, transparent 45%),
-        radial-gradient(circle at 15% 0, rgba(255,255,255,0.9) 0, transparent 55%);
-    mix-blend-mode: screen;
-    opacity: 0.55;
-    pointer-events: none;
-}
-
-/* Текст */
-
-.page-text-block {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-right: 8px;
-}
-
-.page-tagline {
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    color: #a07ac5;
+.page-sheet {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c98ae7;
+  margin: 0 0 4px;
 }
 
 .page-title {
-    font-family: "Playfair Display", "Times New Roman", serif;
-    font-size: clamp(26px, 3vw, 32px);
-    line-height: 1.2;
-    margin-bottom: 14px;
-    color: #39214d;
+  margin: 0 0 4px;
+  font-size: 26px;
+  line-height: 1.25;
+  color: #3a1458;
 }
 
-.page-date {
-    font-size: 13px;
-    color: #8b6ea7;
-    margin-bottom: 16px;
+.page-meta {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #a36fbe;
 }
 
-.page-story {
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 12px;
-    color: #3c2b4a;
+.page-desc {
+  margin: 0 0 4px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #392041;
 }
 
-.page-mini-note {
-    font-size: 13px;
-    color: #9a7cbc;
-    font-style: italic;
+.page-note {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b471d0;
+  font-style: italic;
 }
 
-/* Footer */
+/* ===== АНИМАЦИЯ ПЕРЕЛИСТЫВАНИЯ ===== */
+
+.page {
+  transform-origin: 0 50%;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.page.turn-right {
+  animation: pageTurnRight 0.6s ease forwards;
+}
+
+.page.turn-left {
+  animation: pageTurnLeft 0.6s ease forwards;
+}
+
+@keyframes pageTurnRight {
+  0% {
+    transform: perspective(1600px) rotateY(0deg) translateX(0);
+  }
+  45% {
+    transform: perspective(1600px) rotateY(-18deg) translateX(-12px);
+    box-shadow: 0 26px 55px rgba(38, 9, 77, 0.85);
+  }
+  100% {
+    transform: perspective(1600px) rotateY(0deg) translateX(0);
+    box-shadow: 0 22px 45px rgba(52, 10, 99, 0.65);
+  }
+}
+
+@keyframes pageTurnLeft {
+  0% {
+    transform: perspective(1600px) rotateY(0deg) translateX(0);
+  }
+  45% {
+    transform: perspective(1600px) rotateY(18deg) translateX(12px);
+    box-shadow: 0 26px 55px rgba(38, 9, 77, 0.85);
+  }
+  100% {
+    transform: perspective(1600px) rotateY(0deg) translateX(0);
+    box-shadow: 0 22px 45px rgba(52, 10, 99, 0.65);
+  }
+}
+
+/* ===== НИЗ ===== */
 
 .album-footer {
-    width: min(1200px, 100%);
-    display: flex;
-    justify-content: center;
-    margin-top: 4px;
-    font-size: 11px;
-    color: #5f4b78;
-    opacity: 0.9;
+  text-align: center;
+  font-size: 12px;
+  color: #f7e9ff;
+  text-shadow: 0 1px 3px rgba(25, 4, 52, 0.75);
 }
 
-.footer-text {
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.5);
-    box-shadow: 0 8px 20px rgba(93, 62, 128, 0.35);
-    backdrop-filter: blur(10px);
-}
-
-/* Адаптивность */
+/* ===== АДАПТИВ ===== */
 
 @media (max-width: 900px) {
-    .album-shell {
-        grid-template-columns: 42px minmax(0, 1fr) 42px;
-    }
+  .page-inner {
+    grid-template-columns: 1fr;
+  }
 
-    .album-page {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-
-    .page-photo-block {
-        order: -1;
-        margin-bottom: 12px;
-    }
-
-    .photo-frame {
-        max-width: 100%;
-    }
+  .page-image {
+    order: -1;
+  }
 }
 
-@media (max-width: 600px) {
-    body {
-        padding: 12px 6px;
-    }
+@media (max-width: 640px) {
+  .album-wrapper {
+    padding-inline: 8px;
+  }
 
-    .album-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
+  .album-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .album-shell {
-        grid-template-columns: 32px minmax(0, 1fr) 32px;
-    }
+  .page {
+    border-radius: 30px;
+    padding: 12px;
+  }
 
-    .album-page {
-        padding: 16px;
-        border-radius: 22px;
-    }
+  .page-inner {
+    border-radius: 24px;
+    padding: 14px;
+  }
 
-    .page-title {
-        font-size: 22px;
-    }
+  .page-title {
+    font-size: 22px;
+  }
+
+  .page-desc,
+  .page-note {
+    font-size: 14px;
+  }
+
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+  }
+
+  .nav-btn-left {
+    left: 4px;
+  }
+
+  .nav-btn-right {
+    right: 4px;
+  }
 }

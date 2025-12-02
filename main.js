@@ -1,261 +1,356 @@
-// Данные альбома: фото + тексты на трёх языках
-const pages = [
-    {
-        image: "images/hero.jpeg",
-        ru: {
-            tagline: "ПРЕМИАЛЬНЫЙ ФОТОАЛЬБОМ",
-            title: "Наш день ожидания чуда",
-            date: "26 января 2021 · Стокгольм, Швеция",
-            story: "Каждая страница этого альбома хранит дыхание счастья, прикосновения и лёгкие шевеления новой жизни. В этот день рождалась семья из трёх.",
-            mini: "Этот альбом создан, чтобы внуки тоже могли почувствовать, как их ждали."
-        },
-        sv: {
-            tagline: "PREMIUM FOTOALBUM",
-            title: "Vår dag i väntan på miraklet",
-            date: "26 januari 2021 · Stockholm, Sverige",
-            story: "Varje sida i albumet bär andetag av lycka, varma händer och stilla rörelser från ett nytt liv. Den här dagen föddes en familj på tre.",
-            mini: "Albumet är gjort för att även barnbarnen ska känna hur efterlängtade de var."
-        },
-        en: {
-            tagline: "PREMIUM PHOTO ALBUM",
-            title: "Our Day of Expecting a Miracle",
-            date: "26 January 2021 · Stockholm, Sweden",
-            story: "Every page of this album keeps the breath of happiness, gentle touches and the soft movements of new life. On this day, a family of three was born.",
-            mini: "This album is made so even your grandchildren can feel how wanted they were."
-        }
+// ===== ДАННЫЕ АЛЬБОМА =====
+
+const albumData = {
+  ru: {
+    cover: {
+      tag: "ПРЕМИАЛЬНЫЙ ФОТОАЛЬБОМ",
+      title: "Наш день ожидания чуда",
+      meta: "26 января 2021 · Стокгольм, Швеция",
+      desc:
+        "Каждая страница этого альбома хранит дыхание счастья, прикосновения и лёгкие шевеления новой жизни. В этот день рождалась семья из трёх.",
+      note:
+        "Создано с любовью VS LiteCode Studio — для самых волшебных недель ожидания.",
+      image: "images/hero.jpeg"
     },
-    {
-        image: "images/gallery dorizontal.jpeg",
-        ru: {
-            tagline: "ЛИСТ 1",
-            title: "Горизонтальное счастье",
-            date: "26 января 2021 · Стокгольм, Швеция",
-            story: "Мы опираемся друг на друга, а малыш — на нас обоих. Здесь всё будущее в одном спокойном вдохе.",
-            mini: "Фотография о том, как комфортно миру, когда мама и папа рядом."
-        },
-        sv: {
-            tagline: "SIDA 1",
-            title: "Liggande lycka",
-            date: "26 januari 2021 · Stockholm, Sverige",
-            story: "Vi vilar mot varandra och den lilla vilar mot oss båda. Hela framtiden får plats i ett enda lugnt andetag.",
-            mini: "En bild om hur trygg världen är när mamma och pappa är nära."
-        },
-        en: {
-            tagline: "PAGE 1",
-            title: "Happiness in Repose",
-            date: "26 January 2021 · Stockholm, Sweden",
-            story: "We lean on each other and the baby leans on us both. The whole future fits into a single quiet breath.",
-            mini: "A photograph about how safe the world is when mum and dad are close."
-        }
+    slides: [
+      {
+        sheet: "Лист 1",
+        title: "Горизонтальное счастье",
+        meta: "26 января 2021 · Стокгольм, Швеция",
+        desc:
+          "Мы опираемся друг на друга, а малыш — на нас обоих. Здесь всё будущее уместилось в одном спокойном вдохе.",
+        note:
+          "Фотография о том, как комфортно миру, когда мама и папа рядом.",
+        image: "images/gallery dorizontal.jpeg"
+      },
+      {
+        sheet: "Лист 2",
+        title: "Вдох между двумя сердцами",
+        meta: "26 января 2021 · Стокгольм, Швеция",
+        desc:
+          "Здесь мы учимся держаться за руки не только друг друга, но и наше завтра. Между ладонями помещается целая жизнь.",
+        note:
+          "Кадр, в котором ожидание звучит громче, чем слова.",
+        image: "images/gallery.jpeg"
+      },
+      {
+        sheet: "Лист 3",
+        title: "Объятие, в котором уже трое",
+        meta: "26 января 2021 · Стокгольм, Швеция",
+        desc:
+          "Мама, папа и маленькое сердечко между ними. В это объятие можно вернуться в любой момент жизни.",
+        note:
+          "Фотография, где любовь уже нашла себе третье место.",
+        image: "images/gallery1.jpeg"
+      },
+      {
+        sheet: "Лист 4",
+        title: "Цветы и первые пинки",
+        meta: "26 января 2021 · Стокгольм, Швеция",
+        desc:
+          "Каждый лепесток, как неделя ожидания — хрупкая, но бесконечно счастливая. Мы держим букет, а внутри растёт целый сад.",
+        note:
+          "Кадр, который пахнет весной, даже если за окном зима.",
+        image: "images/gallery4.jpeg"
+      },
+      {
+        sheet: "Лист 5",
+        title: "Пауза между вдохами",
+        meta: "26 января 2021 · Стокгольм, Швеция",
+        desc:
+          "Тихий момент, чтобы просто послушать, как внутри шуршит новая жизнь. В эти секунды время почти останавливается.",
+        note:
+          "Фотография, которую хочется рассматривать в тишине.",
+        image: "images/gallery3.jpeg"
+      },
+      {
+        sheet: "Лист 6",
+        title: "Дом там, где этот взгляд",
+        meta: "26 января 2021 · Стокгольм, Швеция",
+        desc:
+          "Тёплый, уверенный и немного влюблённый заново. В этом взгляде уже есть место для маленькой пары глаз.",
+        note:
+          "Любовь, которая не боится становиться больше.",
+        image: "images/gallery6.jpeg"
+      },
+      {
+        sheet: "Лист 7",
+        title: "Последний кадр до встречи",
+        meta: "26 января 2021 · Стокгольм, Швеция",
+        desc:
+          "Мы ещё вдвоём, но уже навсегда втроём. Через несколько недель этот альбом получит первые отпечатки крошечных пальцев.",
+        note:
+          "Финальная страница, где история только начинается. Создано с любовью VS LiteCode Studio.",
+        image: "images/gallery7.jpeg"
+      }
+    ]
+  },
+
+  // ===== ШВЕДСКИЙ =====
+  sv: {
+    cover: {
+      tag: "PREMIUM FOTOALBUM",
+      title: "Vår dag i väntan på ett mirakel",
+      meta: "26 januari 2021 · Stockholm, Sverige",
+      desc:
+        "Varje sida i det här albumet bär andetag av lycka, beröringar och de första små rörelserna av ett nytt liv. Den här dagen föddes en familj på tre.",
+      note:
+        "Skapat med kärlek av VS LiteCode Studio – för de mest magiska veckorna i väntan.",
+      image: "images/hero.jpeg"
     },
-    {
-        image: "images/gallery.jpeg",
-        ru: {
-            tagline: "ЛИСТ 2",
-            title: "Вдох между двумя сердцами",
-            date: "26 января 2021 · Стокгольм, Швеция",
-            story: "Здесь мы учимся держаться за руки не только друг друга, но и наше завтра. Между ладонями помещается целая жизнь.",
-            mini: "Кадр, в котором ожидание звучит громче, чем слова."
-        },
-        sv: {
-            tagline: "SIDA 2",
-            title: "Andetag mellan två hjärtan",
-            date: "26 januari 2021 · Stockholm, Sverige",
-            story: "Här lär vi oss att hålla i både varandra och vår morgondag. Mellan våra händer får ett helt liv plats.",
-            mini: "Ett ögonblick där väntan talar högre än orden."
-        },
-        en: {
-            tagline: "PAGE 2",
-            title: "A Breath Between Two Hearts",
-            date: "26 January 2021 · Stockholm, Sweden",
-            story: "Here we learn to hold not only each other but also our tomorrow. A whole life fits between our hands.",
-            mini: "A frame where expectation speaks louder than words."
-        }
+    slides: [
+      {
+        sheet: "Blad 1",
+        title: "Horisontell lycka",
+        meta: "26 januari 2021 · Stockholm, Sverige",
+        desc:
+          "Vi lutar oss mot varandra, och bebisen lutar sig mot oss båda. Hela framtiden finns i ett lugnt andetag.",
+        note:
+          "Ett foto om hur trygg världen känns när mamma och pappa är nära.",
+        image: "images/gallery dorizontal.jpeg"
+      },
+      {
+        sheet: "Blad 2",
+        title: "Ett andetag mellan två hjärtan",
+        meta: "26 januari 2021 · Stockholm, Sverige",
+        desc:
+          "Här lär vi oss att hålla i handen inte bara varandra, utan också vår morgondag. Mellan handflatorna ryms ett helt liv.",
+        note:
+          "En bild där väntan låter högre än orden.",
+        image: "images/gallery.jpeg"
+      },
+      {
+        sheet: "Blad 3",
+        title: "En kram där ni redan är tre",
+        meta: "26 januari 2021 · Stockholm, Sverige",
+        desc:
+          "Mamma, pappa och ett litet hjärta mellan dem. Till den här kramen kan man återvända när som helst i livet.",
+        note:
+          "Ett foto där kärleken redan har hittat plats för en tredje.",
+        image: "images/gallery1.jpeg"
+      },
+      {
+        sheet: "Blad 4",
+        title: "Blommor och de första små sparkarna",
+        meta: "26 januari 2021 · Stockholm, Sverige",
+        desc:
+          "Varje kronblad är som en vecka av väntan – skör men oändligt lycklig. Vi håller en bukett, men inuti växer en hel trädgård.",
+        note:
+          "En bild som doftar vår, även om det är vinter utanför.",
+        image: "images/gallery4.jpeg"
+      },
+      {
+        sheet: "Blad 5",
+        title: "Paus mellan andetagen",
+        meta: "26 januari 2021 · Stockholm, Sverige",
+        desc:
+          "Ett stilla ögonblick för att bara lyssna på hur ett nytt liv prasslar inuti. I de här sekunderna stannar tiden nästan.",
+        note:
+          "Ett foto man vill betrakta i tystnad.",
+        image: "images/gallery3.jpeg"
+      },
+      {
+        sheet: "Blad 6",
+        title: "Hemmet är där den här blicken finns",
+        meta: "26 januari 2021 · Stockholm, Sverige",
+        desc:
+          "Varm, trygg och lite nyförälskad igen. I den här blicken finns redan plats för ett par små ögon.",
+        note:
+          "Kärlek som inte är rädd för att bli större.",
+        image: "images/gallery6.jpeg"
+      },
+      {
+        sheet: "Blad 7",
+        title: "Sista bilden före mötet",
+        meta: "26 januari 2021 · Stockholm, Sverige",
+        desc:
+          "Vi är fortfarande två, men redan för alltid tre. Om några veckor får det här albumet de första avtrycken av pyttesmå fingrar.",
+        note:
+          "Sista sidan där historien bara har börjat. Skapat med kärlek av VS LiteCode Studio.",
+        image: "images/gallery7.jpeg"
+      }
+    ]
+  },
+
+  // ===== АНГЛИЙСКИЙ =====
+  en: {
+    cover: {
+      tag: "PREMIUM PHOTO ALBUM",
+      title: "Our Day of Expecting a Miracle",
+      meta: "26 January 2021 · Stockholm, Sweden",
+      desc:
+        "Every page of this album keeps the breath of happiness, gentle touch and the first tiny movements of a new life. On this day, a family of three was born.",
+      note:
+        "Created with love by VS LiteCode Studio – for the most magical weeks of waiting.",
+      image: "images/hero.jpeg"
     },
-    {
-        image: "images/gallery1.jpeg",
-        ru: {
-            tagline: "ЛИСТ 3",
-            title: "Объятие, в котором уже трое",
-            date: "26 января 2021 · Стокгольм, Швеция",
-            story: "Мама, папа и маленькое сердечко между ними. В это объятие можно вернуться в любой момент жизни.",
-            mini: "Фотография, где любовь уже нашла себе третье место."
-        },
-        sv: {
-            tagline: "SIDA 3",
-            title: "En kram där vi redan är tre",
-            date: "26 januari 2021 · Stockholm, Sverige",
-            story: "Mamma, pappa och ett litet hjärta emellan. Till den här kramen kan man alltid återvända.",
-            mini: "En bild där kärleken redan gjort plats för en tredje."
-        },
-        en: {
-            tagline: "PAGE 3",
-            title: "An Embrace Made for Three",
-            date: "26 January 2021 · Stockholm, Sweden",
-            story: "Mum, dad and a tiny heart between them. This is an embrace you can return to at any moment in life.",
-            mini: "A picture where love has already found room for a third."
-        }
-    },
-    {
-        image: "images/gallery4.jpeg",
-        ru: {
-            tagline: "ЛИСТ 4",
-            title: "Цветы и первые пинки",
-            date: "26 января 2021 · Стокгольм, Швеция",
-            story: "Каждый лепесток, как неделя ожидания — хрупкая, но бесконечно счастливая. Мы держим букет, а внутри растёт целый сад.",
-            mini: "Кадр, который пахнет весной, даже если за окном зима."
-        },
-        sv: {
-            tagline: "SIDA 4",
-            title: "Blommor och de första sparkarna",
-            date: "26 januari 2021 · Stockholm, Sverige",
-            story: "Varje kronblad är som en vecka av väntan – skör men oändligt lycklig. I våra händer finns en bukett, i magen växer en hel trädgård.",
-            mini: "En bild som doftar vår även om det är vinter ute."
-        },
-        en: {
-            tagline: "PAGE 4",
-            title: "Flowers and First Kicks",
-            date: "26 January 2021 · Stockholm, Sweden",
-            story: "Each petal is like a week of waiting – fragile yet endlessly joyful. A bouquet in our hands, a whole garden growing inside.",
-            mini: "A frame that smells like spring even when it’s winter outside."
-        }
-    },
-    {
-        image: "images/gallery3.jpeg",
-        ru: {
-            tagline: "ЛИСТ 5",
-            title: "Пауза между вдохами",
-            date: "26 января 2021 · Стокгольм, Швеция",
-            story: "Тихий момент, чтобы просто послушать, как внутри шуршит новая жизнь. В эти секунды время почти останавливается.",
-            mini: "Фотография, которую хочется рассматривать в тишине."
-        },
-        sv: {
-            tagline: "SIDA 5",
-            title: "Pausen mellan andetagen",
-            date: "26 januari 2021 · Stockholm, Sverige",
-            story: "Ett stilla ögonblick för att lyssna på livet som rör sig där inne. Just här stannar tiden nästan.",
-            mini: "En bild man vill titta på i tystnad."
-        },
-        en: {
-            tagline: "PAGE 5",
-            title: "The Pause Between Breaths",
-            date: "26 January 2021 · Stockholm, Sweden",
-            story: "A quiet moment just to listen to the tiny sounds of life inside. In these seconds, time almost stops.",
-            mini: "A photograph you want to look at in silence."
-        }
-    },
-    {
-        image: "images/gallery6.jpeg",
-        ru: {
-            tagline: "ЛИСТ 6",
-            title: "Дом там, где этот взгляд",
-            date: "26 января 2021 · Стокгольм, Швеция",
-            story: "Тёплый, уверенный и немного влюблённый заново. В этом взгляде уже есть место для маленькой пары глаз.",
-            mini: "Любовь, которая не боится становиться больше."
-        },
-        sv: {
-            tagline: "SIDA 6",
-            title: "Hem är där den här blicken finns",
-            date: "26 januari 2021 · Stockholm, Sverige",
-            story: "Varm, trygg och lite nyförälskad igen. I den här blicken finns redan plats för ett par små ögon till.",
-            mini: "Kärlek som inte är rädd för att växa."
-        },
-        en: {
-            tagline: "PAGE 6",
-            title: "Home Is Where This Look Is",
-            date: "26 January 2021 · Stockholm, Sweden",
-            story: "Warm, steady and a little in love all over again. This gaze already has room for one more pair of eyes.",
-            mini: "Love that isn’t afraid to grow."
-        }
-    },
-    {
-        image: "images/gallery7.jpeg",
-        ru: {
-            tagline: "ЛИСТ 7",
-            title: "Последний кадр до встречи",
-            date: "26 января 2021 · Стокгольм, Швеция",
-            story: "Мы ещё вдвоём, но уже навсегда втроём. Через несколько недель этот альбом получит первые отпечатки крошечных пальцев.",
-            mini: "Финальная страница, где история только начинается."
-        },
-        sv: {
-            tagline: "SIDA 7",
-            title: "Sista bilden före mötet",
-            date: "26 januari 2021 · Stockholm, Sverige",
-            story: "Vi är fortfarande två, men redan för alltid tre. Om några veckor får albumet sina första små fingeravtryck.",
-            mini: "Sista sidan där berättelsen egentligen börjar."
-        },
-        en: {
-            tagline: "PAGE 7",
-            title: "The Last Frame Before We Meet",
-            date: "26 January 2021 · Stockholm, Sweden",
-            story: "We are still two, but already forever three. In a few weeks, this album will get its first tiny fingerprints.",
-            mini: "The final page where the story is only beginning."
-        }
-    }
-];
+    slides: [
+      {
+        sheet: "Sheet 1",
+        title: "Horizontal Happiness",
+        meta: "26 January 2021 · Stockholm, Sweden",
+        desc:
+          "We lean on each other, and the baby leans on both of us. The whole future fits into one calm breath.",
+        note:
+          "A photograph about how safe the world feels when mum and dad are close.",
+        image: "images/gallery dorizontal.jpeg"
+      },
+      {
+        sheet: "Sheet 2",
+        title: "A Breath Between Two Hearts",
+        meta: "26 January 2021 · Stockholm, Sweden",
+        desc:
+          "Here we learn to hold not only each other’s hands, but also our tomorrow. A whole life fits between our palms.",
+        note:
+          "A frame where expectation sounds louder than words.",
+        image: "images/gallery.jpeg"
+      },
+      {
+        sheet: "Sheet 3",
+        title: "An Embrace That’s Already Three",
+        meta: "26 January 2021 · Stockholm, Sweden",
+        desc:
+          "Mum, dad and a tiny heart between them. This is an embrace you can return to at any moment of life.",
+        note:
+          "A photograph where love has already found space for the third.",
+        image: "images/gallery1.jpeg"
+      },
+      {
+        sheet: "Sheet 4",
+        title: "Flowers and the First Kicks",
+        meta: "26 January 2021 · Stockholm, Sweden",
+        desc:
+          "Every petal is like a week of waiting – fragile, yet endlessly happy. We hold a bouquet, while a whole garden grows inside.",
+        note:
+          "A frame that smells like spring, even if it’s winter outside.",
+        image: "images/gallery4.jpeg"
+      },
+      {
+        sheet: "Sheet 5",
+        title: "A Pause Between Breaths",
+        meta: "26 January 2021 · Stockholm, Sweden",
+        desc:
+          "A quiet moment just to listen to how new life rustles inside. For these few seconds, time almost stops.",
+        note:
+          "A photograph you want to look at in silence.",
+        image: "images/gallery3.jpeg"
+      },
+      {
+        sheet: "Sheet 6",
+        title: "Home Is Where This Look Lives",
+        meta: "26 January 2021 · Stockholm, Sweden",
+        desc:
+          "Warm, confident and a little in love again. In this look there is already room for a tiny pair of eyes.",
+        note:
+          "Love that isn’t afraid of becoming bigger.",
+        image: "images/gallery6.jpeg"
+      },
+      {
+        sheet: "Sheet 7",
+        title: "The Last Frame Before We Meet",
+        meta: "26 January 2021 · Stockholm, Sweden",
+        desc:
+          "We are still two, but already forever three. In a few weeks this album will receive the first prints of tiny fingers.",
+        note:
+          "The final page where the story is only beginning. Created with love by VS LiteCode Studio.",
+        image: "images/gallery7.jpeg"
+      }
+    ]
+  }
+};
+
+// ===== ЛОГИКА ПЕРЕКЛЮЧЕНИЯ =====
 
 let currentLang = "ru";
-let currentIndex = 0;
+let currentIndex = 0; // 0 = обложка; дальше 1..slides.length
 
-// DOM-элементы
-const pageEl = document.getElementById("albumPage");
-const imgEl = document.getElementById("pageImage");
-const taglineEl = document.getElementById("pageTagline");
-const titleEl = document.getElementById("pageTitle");
-const dateEl = document.getElementById("pageDate");
-const storyEl = document.getElementById("pageStory");
-const miniNoteEl = document.getElementById("pageMiniNote");
+const pageEl = document.getElementById("page");
+const imgEl = document.getElementById("page-image");
+const tagEl = document.getElementById("page-tag");
+const sheetEl = document.getElementById("page-sheet");
+const titleEl = document.getElementById("page-title");
+const metaEl = document.getElementById("page-meta");
+const descEl = document.getElementById("page-desc");
+const noteEl = document.getElementById("page-note");
 
-const prevBtn = document.getElementById("prevPage");
-const nextBtn = document.getElementById("nextPage");
+const prevBtn = document.querySelector(".nav-btn-left");
+const nextBtn = document.querySelector(".nav-btn-right");
 const langButtons = document.querySelectorAll(".lang-btn");
 
-// рендер страницы
-function renderPage() {
-    const pageData = pages[currentIndex][currentLang];
+function renderPage(direction) {
+  const data = albumData[currentLang];
 
-    imgEl.src = pages[currentIndex].image;
-    imgEl.alt = pageData.title;
+  let pageData;
+  if (currentIndex === 0) {
+    pageData = data.cover;
+    pageEl.classList.add("page--cover");
+    sheetEl.textContent = "";
+  } else {
+    const slide = data.slides[currentIndex - 1];
+    pageData = slide;
+    pageEl.classList.remove("page--cover");
+    sheetEl.textContent = slide.sheet || "";
+  }
 
-    taglineEl.textContent = pageData.tagline;
-    titleEl.textContent = pageData.title;
-    dateEl.textContent = pageData.date;
-    storyEl.textContent = pageData.story;
-    miniNoteEl.textContent = pageData.mini;
+  tagEl.textContent = pageData.tag || "";
+  titleEl.textContent = pageData.title;
+  metaEl.textContent = pageData.meta;
+  descEl.textContent = pageData.desc;
+  noteEl.textContent = pageData.note;
+  imgEl.src = pageData.image;
+
+  // Анимация перелистывания
+  if (direction === "next") {
+    pageEl.classList.remove("turn-left");
+    void pageEl.offsetWidth;
+    pageEl.classList.add("turn-right");
+  } else if (direction === "prev") {
+    pageEl.classList.remove("turn-right");
+    void pageEl.offsetWidth;
+    pageEl.classList.add("turn-left");
+  }
 }
 
-// навигация с анимацией перелистывания
-function goToPage(direction) {
-    // эффект перелистывания
-    pageEl.classList.remove("turn-right", "turn-left");
-    void pageEl.offsetWidth; // перезапустить анимацию
+function goNext() {
+  const slidesCount = albumData[currentLang].slides.length;
+  if (currentIndex < slidesCount) {
+    currentIndex += 1;
+  } else {
+    currentIndex = 0;
+  }
+  renderPage("next");
+}
 
-    if (direction === "next") {
-        currentIndex = (currentIndex + 1) % pages.length;
-        pageEl.classList.add("turn-right");
-    } else {
-        currentIndex = (currentIndex - 1 + pages.length) % pages.length;
-        pageEl.classList.add("turn-left");
-    }
+function goPrev() {
+  const slidesCount = albumData[currentLang].slides.length;
+  if (currentIndex > 0) {
+    currentIndex -= 1;
+  } else {
+    currentIndex = slidesCount;
+  }
+  renderPage("prev");
+}
 
+// Слушатели
+nextBtn.addEventListener("click", goNext);
+prevBtn.addEventListener("click", goPrev);
+
+langButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const lang = btn.getAttribute("data-lang");
+    if (lang === currentLang) return;
+
+    currentLang = lang;
+    langButtons.forEach((b) => b.classList.toggle("active", b === btn));
+    // остаёмся на той же странице по номеру
     renderPage();
-}
-
-// переключение языка
-langButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const lang = btn.dataset.lang;
-        currentLang = lang;
-
-        langButtons.forEach(b => b.classList.remove("lang-btn-active"));
-        btn.classList.add("lang-btn-active");
-
-        renderPage();
-    });
+  });
 });
 
-prevBtn.addEventListener("click", () => goToPage("prev"));
-nextBtn.addEventListener("click", () => goToPage("next"));
+// Сброс анимации после окончания
+pageEl.addEventListener("animationend", () => {
+  pageEl.classList.remove("turn-right", "turn-left");
+});
 
-// первый рендер
+// стартовая отрисовка
 renderPage();
